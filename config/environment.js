@@ -8,6 +8,8 @@ module.exports = function(environment) {
     locationType: 'auto',
     contentSecurityPolicy: {
       'img-src': "'self' data:",
+      'style-src': "'self' https://maxcdn.bootstrapcdn.com",
+      'font-src': "'self' https://maxcdn.bootstrapcdn.com"
     },
     EmberENV: {
       FEATURES: {

@@ -15,6 +15,9 @@ export default Ember.Route.extend({
         },
         deleteList(list) {
             list.destroyRecord();
+        },
+        cloneList(list){
+          //TODO clone list
         }
     }
 });

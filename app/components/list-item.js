@@ -20,6 +20,10 @@ export default Ember.Component.extend({
         deleteList(){
           let list = this.get('list');
           this.sendAction('deleteList', list);
+        },
+        cloneList(){
+          let list = this.get('list');
+          this.sendAction('cloneList', list);
         }
     }
 });
