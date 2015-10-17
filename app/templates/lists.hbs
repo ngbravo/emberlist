@@ -1,23 +1,24 @@
 <section id="todoapp">
   <header id="header">
     <h1>emberlist</h1>
-    <input type="text" id="new-todo" placeholder="Need a list?" />
+    {{input
+      type="text"
+      id="new-todo"
+      placeholder="Need a list?"
+      value=newName
+      action="createList"
+    }}
   </header>
 
   <section id="main">
     <ul id="todo-list">
-      <li>
-        <label>List 1</label>
-        <button class="destroy"></button>
-      </li>
-      <li>
-        <label>List 2</label>
-        <button class="destroy"></button>
-      </li>
-      <li>
-        <label>List 3</label>
-        <button class="destroy"></button>
-      </li>
+      {{#each list in model}}
+        <li>
+          <label>{{list.name}}</label>
+          <button class="destroy"></button>
+        </li>
+      {{/each}}
+
     </ul>
   </section>
 </section>
