@@ -1,2 +1,6 @@
-<label>{{list.title}}</label>
-<button class="destroy"></button>
+{{#if editing}}
+     {{input class="edit" value=list.title action="submitList"}}
+{{else}}
+    <label {{action "editList" on="doubleClick"}}>{{list.title}}</label>
+    <button class="destroy" {{action "deleteList"}}></button>
+{{/if}}

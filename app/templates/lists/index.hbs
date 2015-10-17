@@ -1,7 +1,7 @@
 <section id="main">
     <ul id="todo-list">
         {{#each model as |list|}}
-            {{list-item list=list}}
+            {{list-item list=list updateList="updateList" deleteList="deleteList"}}
         {{/each}}
     </ul>
 </section>
