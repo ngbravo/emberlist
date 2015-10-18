@@ -9,7 +9,10 @@ export default Ember.Route.extend({
          let list = this.modelFor(this.routeName);
          this.store.createRecord('category', {
              title: newTitle
-         }).save();
+         }).save().then(function(category){
+           list.get('categories').pushObject(category);
+           list.save();
+         });
       },
       updateCategory(category) {
           category.save();
