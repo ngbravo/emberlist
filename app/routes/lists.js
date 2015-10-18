@@ -26,6 +26,31 @@ export default Ember.Route.extend({
         },
         cloneList(list){
           //TODO clone list
+          var store = this.store;
+          this.store.createRecord('list', {
+              title: list.get('title') + " - copy"
+          }).save().then(function(newList){
+            list.get('categories').toArray().forEach(function(category){
+              store.createRecord('category',{
+                title:category.get('title')
+              }).save().then(function(newCategory){
+                category.get('todos').toArray().forEach(function(todo){
+                  store.createRecord('todo',{
+                    title:todo.get('title'),
+                    complete: todo.get('complete')
+                  }).save().then(function(newTodo){
+                    newTodo.set('category',newCategory);
+                    newCategory.get('todos').pushObject(newTodo);
+                    newTodo.save();
+                  });
+                });
+                newCategory.set('list',newList);
+                newList.get('categories').pushObject(newCategory);
+                newCategory.save();
+              });
+            });
+            newList.save();
+          });
         }
     }
 });
