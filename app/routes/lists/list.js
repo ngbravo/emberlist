@@ -5,6 +5,17 @@ export default Ember.Route.extend({
       return this.store.find('list', params.list_id);
     },
     actions: {
-
+      createCategory(newTitle) {
+         let list = this.modelFor(this.routeName);
+         this.store.createRecord('category', {
+             title: newTitle
+         }).save();
+      },
+      updateCategory(category) {
+          category.save();
+      },
+      deleteCategory(category) {
+          category.destroyRecord();
+      }
     }
 });
