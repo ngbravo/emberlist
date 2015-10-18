@@ -7,7 +7,9 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('lists', {path:'/'}, function() {
-    this.route('list', {path: 'lists/:list_id'});
+    this.route('list', {path: 'lists/:list_id'}, function() {
+      this.route('category', {path: 'categories/:category_id'});
+    });
   });
 });
 
