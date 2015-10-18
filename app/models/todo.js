@@ -2,6 +2,6 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   title: DS.attr('string'),
-  isCompleted: DS.attr('boolean'),
+  complete: DS.attr('boolean'),
   category: DS.belongsTo('category')
 });
