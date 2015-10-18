@@ -24,6 +24,9 @@ export default Ember.Route.extend({
         let list = this.modelFor(this.routeName);
         list.get('categories').removeObject(category);
         list.save();
+        category.get('todos').toArray().forEach(function(todo){
+          todo.destroyRecord();
+        });
         category.destroyRecord();
       }
     }

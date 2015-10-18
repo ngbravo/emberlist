@@ -17,6 +17,9 @@ export default Ember.Route.extend({
         },
         deleteList(list) {
           list.get('categories').toArray().forEach(function(category){
+            category.get('todos').toArray().forEach(function(todo){
+              todo.destroyRecord();
+            });
             category.destroyRecord();
           });
           list.destroyRecord();
