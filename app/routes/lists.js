@@ -14,7 +14,10 @@ export default Ember.Route.extend({
             list.save();
         },
         deleteList(list) {
-            list.destroyRecord();
+          list.get('categories').toArray().forEach(function(category){
+            category.destroyRecord();
+          });
+          list.destroyRecord();
         },
         cloneList(list){
           //TODO clone list
