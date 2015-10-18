@@ -21,7 +21,10 @@ export default Ember.Route.extend({
           category.save();
       },
       deleteCategory(category) {
-          category.destroyRecord();
+        let list = this.modelFor(this.routeName);
+        list.get('categories').removeObject(category);
+        list.save();
+        category.destroyRecord();
       }
     }
 });
