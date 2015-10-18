@@ -11,7 +11,10 @@ export default Ember.Route.extend({
              title: newTitle
          }).save().then(function(category){
            list.get('categories').pushObject(category);
-           list.save();
+           list.save().then(function(){
+             category.set('list', list);
+             category.save();
+           });
          });
       },
       updateCategory(category) {
