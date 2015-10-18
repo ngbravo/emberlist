@@ -5,6 +5,6 @@ export default Ember.Route.extend({
       return this.store.find('category', params.category_id);
     },
     actions: {
-
+      
     }
 });
