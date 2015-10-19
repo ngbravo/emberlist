@@ -9,7 +9,11 @@ Router.map(function() {
   this.route('lists', {path:'/'}, function() {
     this.route('list', {path: 'lists/:list_id'}, function() {
       this.route('category', {path: 'categories/:category_id'}, function() {
-        this.route('todos', {path: 'todos'});
+        this.route('todos', {path: 'todos'}, function() {
+          this.route('complete', {path: 'complete'});
+          this.route('incomplete', {path: 'incomplete'});
+          this.route('index');
+        });
       });
     });
   });
